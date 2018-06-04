@@ -1,16 +1,23 @@
 import React from 'react';
-import { connect } from 'dva';
+import {connect} from 'dva';
+import LoginForm from '../components/LoginForm';
+import styles from './Login.css'
 
-function Login() {
+import homebackground from '../assets/yay.jpg';
+const backImage = {
+  backgroundSize: '100% 100%', //记得这里100%
+  background: `url(${ homebackground })`,
+  // backgroundImage: 'url(' + homebackground + ')'
+}
+
+function IndexPage() {
   return (
-    <div>
-      登录<input type="text"/>
-      密码<input type="text"/>
+    <div className={styles["back-img"]} style={backImage}>
+      <LoginForm></LoginForm>
     </div>
   );
 }
 
-Login.propTypes = {
-};
+IndexPage.propTypes = {};
 
-export default connect()(Login);
+export default connect()(IndexPage);

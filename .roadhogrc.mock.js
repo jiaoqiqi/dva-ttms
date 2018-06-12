@@ -1,29 +1,17 @@
-const mock = {};
-let fs = require('fs');
-let path = require('path');
+import mockjs from 'mockjs';
+import { getMovieList } from "./mock/movieList";
 
-let pathArr = [];
+// 是否禁用代理
+// const noProxy = process.env.NO_PROXY === 'true';
 
-function getFile(src) {
-  src = src || path.join(process.cwd(), '/mock');
-  // 读取 src/mock 目录
-  fs.readdirSync(src).forEach(function (file) {
-    const filepath = path.join(src, file);
-    let stats = fs.statSync(filepath);
+getMovieList();
 
-    if (stats.isFile()) {
-      pathArr.push(filepath)
-    } else {
-      getFile(filepath);
-    }
-  });
-}
+// 代码中会兼容本地 service mock 以及部署站点的静态数据
+const proxy = {
 
-console.log(111)
+  'GET /movieList': getMovieList,
+};
 
-getFile();
+// export default (noProxy ? {} : delay(proxy, 1000));
 
-pathArr.forEach(function (file) {
-  Object.assign(mock, require(file));
-});
-module.exports = mock;
+

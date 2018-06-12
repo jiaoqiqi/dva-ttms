@@ -43,7 +43,7 @@ class MovieList extends React.Component {
 function mapStateToProps(state) {
   return {
     list: state.movieList.list,
-    // example： example.js 的 namespace
+    // movieList： movieList 的 namespace
   };
 }
 

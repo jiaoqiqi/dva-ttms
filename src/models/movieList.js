@@ -1,13 +1,13 @@
 import {queryMovies} from "../services/movieList";
 import movieList from "../../mock/movieList"
 
-console.log( movieList.getMovieList().data.list)
 export default {
-
   namespace: 'movieList',
 
   state: {
+
     list: movieList.getMovieList().data.list
+
     // list: [
     //   {
     //     imgPath: "/src/assets/超时空同居.jpg",
